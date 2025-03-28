@@ -9,9 +9,9 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-app.get("/", async (req, res) => {
+app.get("/groupnotes", async (req, res) => {
   const { data, error } = await supabase
-    .from("group_notes")
+    .from("groupnotes")
     .select("*");
 
   if (error) {
@@ -21,11 +21,11 @@ app.get("/", async (req, res) => {
   res.status(200).json(data);
 });
 
-app.post("/", async (req, res) => {
+app.post("/groupnotes", async (req, res) => {
   const payload = req.body;
 
   const { data, error } = await supabase
-    .from("group_notes")
+    .from("groupnotes")
     .insert([payload])
     .select();
 
