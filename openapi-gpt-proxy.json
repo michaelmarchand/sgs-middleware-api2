@@ -1,0 +1,50 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "SGS GPT Proxy",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://sgs-middleware-api-4.vercel.app"
+    }
+  ],
+  "paths": {
+    "/gpt-action": {
+      "post": {
+        "operationId": "proxyGPTAction",
+        "summary": "Unified GPT proxy action for all endpoints",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "route": {
+                    "type": "string"
+                  },
+                  "method": {
+                    "type": "string"
+                  },
+                  "payload": {
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "route",
+                  "method"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Proxy forwarded response"
+          }
+        }
+      }
+    }
+  }
+}
