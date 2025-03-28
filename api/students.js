@@ -27,15 +27,18 @@ app.get("/students", async (req, res) => {
 app.post("/students", async (req, res) => {
   const newStudent = req.body;
 
+  console.log("Incoming student payload:", payload);  // 👈 Add this
   const { data, error } = await supabase
     .from("students")
     .insert([newStudent])
     .select();
 
   if (error) {
+	console.error("Supabase insert error:", error);  // 👈 And this
     return res.status(500).json({ error: error.message });
   }
 
+  console.log("Supabase insert response:", data);  // 👈 And this
   res.status(201).json(data);
 });
 
