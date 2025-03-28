@@ -12,6 +12,7 @@
     { "src": "/leaders", "dest": "api/leaders.js" },
     { "src": "/leadernotes", "dest": "api/leadernotes.js" },
     { "src": "/groups", "dest": "api/groups.js" },
-    { "src": "/groupnotes", "dest": "api/groupnotes.js" }
+    { "src": "/groupnotes", "dest": "api/groupnotes.js" },
+	{ "src": "/gpt-action", "dest": "api/gpt-action.js" }
   ]
 }
