@@ -1,7 +1,5 @@
-
 const express = require("express");
 const { createClient } = require("@supabase/supabase-js");
-require("dotenv").config();
 
 const app = express();
 app.use(express.json());
@@ -12,15 +10,30 @@ const supabase = createClient(
 );
 
 app.get("/", async (req, res) => {
-  const { data, error } = await supabase.from("group_notes").select("*");
-  if (error) return res.status(500).json({ error });
+  const { data, error } = await supabase
+    .from("group_notes")
+    .select("*");
+
+  if (error) {
+    return res.status(500).json({ error: error.message });
+  }
+
   res.status(200).json(data);
 });
 
 app.post("/", async (req, res) => {
-  const { data, error } = await supabase.from("group_notes").insert([req.body]);
-  if (error) return res.status(500).json({ error });
-  res.status(200).json(data);
+  const payload = req.body;
+
+  const { data, error } = await supabase
+    .from("group_notes")
+    .insert([payload])
+    .select();
+
+  if (error) {
+    return res.status(500).json({ error: error.message });
+  }
+
+  res.status(201).json(data);
 });
 
 module.exports = app;
