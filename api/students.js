@@ -19,10 +19,30 @@ app.get(`/${TABLE}`, async (req, res) => {
 });
 
 app.post(`/${TABLE}`, async (req, res) => {
-  const payload = req.body;
+   console.log("BODY:", req.body); // ✅ log the body
+	const payload = req.body;
+
+  console.log("🟡 Incoming payload:", payload);
+
+  // Basic validation (you can extend this as needed)
+  if (!payload.first_name || !payload.last_name) {
+    console.error("🔴 Missing required fields");
+    return res.status(400).json({ error: "first_name and last_name are required." });
+  }
+
   const { data, error } = await supabase.from(TABLE).insert([payload]).select();
-  if (error) return res.status(500).json({ error: error.message });
-  res.status(201).json(data);
+
+  console.log("🔵 Supabase response:", { data, error });
+
+ if (error) {
+    console.error("INSERT ERROR:", error); // ✅ log error
+    return res.status(500).json({ error: error.message });
+  }
+
+  res.status(201).json({
+    message: "Student created successfully.",
+    student: data[0],
+  });
 });
 
 app.patch(`/${TABLE}/:id`, async (req, res) => {
