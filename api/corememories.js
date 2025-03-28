@@ -9,9 +9,9 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-app.get("/core_memories", async (req, res) => {
+app.get("/corememories", async (req, res) => {
   const { data, error } = await supabase
-    .from("core_memories")
+    .from("corememories")
     .select("*");
 
   if (error) {
@@ -21,11 +21,11 @@ app.get("/core_memories", async (req, res) => {
   res.status(200).json(data);
 });
 
-app.post("/core_memories", async (req, res) => {
+app.post("/corememories", async (req, res) => {
   const payload = req.body;
 
   const { data, error } = await supabase
-    .from("core_memories")
+    .from("corememories")
     .insert([payload])
     .select();
 

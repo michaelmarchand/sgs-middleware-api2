@@ -9,9 +9,9 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-app.get("/kdq_responses", async (req, res) => {
+app.get("/kdqresponses", async (req, res) => {
   const { data, error } = await supabase
-    .from("kdq_responses")
+    .from("kdqresponses")
     .select("*");
 
   if (error) {
@@ -21,11 +21,11 @@ app.get("/kdq_responses", async (req, res) => {
   res.status(200).json(data);
 });
 
-app.post("/kdq_responses", async (req, res) => {
+app.post("/kdqresponses", async (req, res) => {
   const payload = req.body;
 
   const { data, error } = await supabase
-    .from("kdq_responses")
+    .from("kdqresponses")
     .insert([payload])
     .select();
 
