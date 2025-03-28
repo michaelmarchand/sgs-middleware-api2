@@ -1,19 +1,17 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "api/*.js", "use": "@vercel/node" }
-  ],
+  "builds": [{ "src": "api/*.js", "use": "@vercel/node" }],
   "routes": [
     { "src": "/students", "dest": "api/students.js" },
     { "src": "/attributes", "dest": "api/attributes.js" },
-    { "src": "/attribute-responses", "dest": "api/attribute-responses.js" },
+    { "src": "/attributeresponses", "dest": "api/attributeresponses.js" },
     { "src": "/kdqs", "dest": "api/kdqs.js" },
-    { "src": "/kdq-responses", "dest": "api/kdq-responses.js" },
-    { "src": "/core-memories", "dest": "api/core-memories.js" },
-    { "src": "/journal-entries", "dest": "api/journal-entries.js" },
+    { "src": "/kdqresponses", "dest": "api/kdqresponses.js" },
+    { "src": "/corememories", "dest": "api/corememories.js" },
+    { "src": "/journalentries", "dest": "api/journalentries.js" },
     { "src": "/leaders", "dest": "api/leaders.js" },
-    { "src": "/leader-notes", "dest": "api/leader-notes.js" },
+    { "src": "/leadernotes", "dest": "api/leadernotes.js" },
     { "src": "/groups", "dest": "api/groups.js" },
-    { "src": "/group-notes", "dest": "api/group-notes.js" }
+    { "src": "/groupnotes", "dest": "api/groupnotes.js" }
   ]
 }
