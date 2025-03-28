@@ -1,55 +1,19 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "api/*.js",
-      "use": "@vercel/node"
-    }
+    { "src": "api/*.js", "use": "@vercel/node" }
   ],
   "routes": [
-    {
-      "src": "/students(/.*)?",
-      "dest": "api/students.js"
-    },
-    {
-      "src": "/attributes(/.*)?",
-      "dest": "api/attributes.js"
-    },
-    {
-      "src": "/attribute_responses(/.*)?",
-      "dest": "api/attribute_responses.js"
-    },
-    {
-      "src": "/kdqs(/.*)?",
-      "dest": "api/kdqs.js"
-    },
-    {
-      "src": "/kdq_responses(/.*)?",
-      "dest": "api/kdq_responses.js"
-    },
-    {
-      "src": "/core_memories(/.*)?",
-      "dest": "api/core_memories.js"
-    },
-    {
-      "src": "/journal_entries(/.*)?",
-      "dest": "api/journal_entries.js"
-    },
-    {
-      "src": "/leaders(/.*)?",
-      "dest": "api/leaders.js"
-    },
-    {
-      "src": "/leader_notes(/.*)?",
-      "dest": "api/leader_notes.js"
-    },
-    {
-      "src": "/groups(/.*)?",
-      "dest": "api/groups.js"
-    },
-    {
-      "src": "/group_notes(/.*)?",
-      "dest": "api/group_notes.js"
-    }
+    { "src": "/students", "dest": "api/students.js" },
+    { "src": "/attributes", "dest": "api/attributes.js" },
+    { "src": "/attribute-responses", "dest": "api/attribute-responses.js" },
+    { "src": "/kdqs", "dest": "api/kdqs.js" },
+    { "src": "/kdq-responses", "dest": "api/kdq-responses.js" },
+    { "src": "/core-memories", "dest": "api/core-memories.js" },
+    { "src": "/journal-entries", "dest": "api/journal-entries.js" },
+    { "src": "/leaders", "dest": "api/leaders.js" },
+    { "src": "/leader-notes", "dest": "api/leader-notes.js" },
+    { "src": "/groups", "dest": "api/groups.js" },
+    { "src": "/group-notes", "dest": "api/group-notes.js" }
   ]
 }
