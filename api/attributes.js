@@ -1,5 +1,7 @@
+
 const express = require("express");
 const { createClient } = require("@supabase/supabase-js");
+require("dotenv").config();
 
 const app = express();
 app.use(express.json());
@@ -9,31 +11,16 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-app.get("/attributes", async (req, res) => {
-  const { data, error } = await supabase
-    .from("attributes")
-    .select("*");
-
-  if (error) {
-    return res.status(500).json({ error: error.message });
-  }
-
+app.get("/", async (req, res) => {
+  const { data, error } = await supabase.from("attributes").select("*");
+  if (error) return res.status(500).json({ error });
   res.status(200).json(data);
 });
 
-app.post("/attributes", async (req, res) => {
-  const payload = req.body;
-
-  const { data, error } = await supabase
-    .from("attributes")
-    .insert([payload])
-    .select();
-
-  if (error) {
-    return res.status(500).json({ error: error.message });
-  }
-
-  res.status(201).json(data);
+app.post("/", async (req, res) => {
+  const { data, error } = await supabase.from("attributes").insert([req.body]);
+  if (error) return res.status(500).json({ error });
+  res.status(200).json(data);
 });
 
 module.exports = app;
